@@ -46,7 +46,7 @@ const userDialogues = [
   "Ugh, okay, I guess I'll deal with it? Bye now."
 ];
 
-const interactiveSpots = {4: ["water", "/raw-assets/images{m}{tps}/scientist.png"], 7: ["earthquake", "/raw-assets/images{m}{tps}/farmer.png"], 9: ["roads", "/raw-assets/images{m}{tps}/farmer.png"]}
+const interactiveSpots = {4: ["water", new URL("/raw-assets/images{m}{tps}/scientist.png", import.meta.url).href], 7: ["earthquake", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href], 9: ["roads", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href]}
 
 var dialogueIndex = 0;
 

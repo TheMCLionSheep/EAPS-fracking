@@ -7,6 +7,7 @@ export default defineConfig({
         port: process.env.PORT || 8000,
     },
     build: {
+        target: 'esnext',
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),

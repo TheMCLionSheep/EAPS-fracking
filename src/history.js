@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // After animation, update event information and slide in the new event details
             setTimeout(() => {
                 eventHeader.textContent = eventName;
-                eventImage.src = this.dataset.image;
+                eventImage.src = new URL(`/raw-assets/images{m}{tps}/${this.dataset.image}`, import.meta.url).href;
                 eventDescription.textContent = description;
 
                 // Add animate-in class to slide in the new event details

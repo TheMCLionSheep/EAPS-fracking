@@ -1,3 +1,5 @@
+import openDoorImg from "/raw-assets/images{m}{tps}/open-door.png";
+
 const colonelSpeeches = [
     "Hey, I'm Donovan Wells. Great to finally meet you... I've heard a lot about you from your grandfather.",
     "I'm a close friend of your late grandfather, George Mitchell. He left you quite the inheritence from his oil business. He wanted me to help you pick up the fracking business.",
@@ -88,7 +90,7 @@ doorImage.addEventListener('click', function() {
     if (currentSpeechIndex != -1) {
         return;
     }
-    doorImage.src = "/raw-assets/images{m}{tps}/open-door.png"
+    doorImage.src = openDoorImg;
     donovanImage.style.display = "block";
     currentSpeechIndex++;
     disableKnocks();

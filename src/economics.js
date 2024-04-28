@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a new building element
             var building = document.createElement('img');
             building.classList.add('building');
-            building.src = `/raw-assets/images{m}{tps}/${type}.png`;
+            building.src = new URL(`/raw-assets/images{m}{tps}/${type}.png`, import.meta.url).href;
             building.style.left = coord.x + '%';
             building.style.top = (coord.y - 10) + '%'; // Start above the button
             building.style.opacity = 0; // Start with 0 opacity
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function spawnCash(coord) {
         var cash = document.createElement('img');
-        cash.src = '/raw-assets/images{m}{tps}/cash.webp';
+        cash.src = new URL('/raw-assets/images{m}{tps}/cash.webp', import.meta.url).href;
         cash.classList.add('cash');
         cash.style.left = coord.x + (Math.random() * 8) - 4 + '%';
         cash.style.top = coord.y + (Math.random() * 8) - 4 + '%';
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function donovanSpeak(speech) {
-        speechText = donovanSpeech[speech];
+        let speechText = donovanSpeech[speech];
 
         clearInterval(textTimeoutId);
 
