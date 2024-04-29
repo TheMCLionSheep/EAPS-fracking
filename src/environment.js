@@ -13,6 +13,9 @@ const TEXT_SPEED = 30;
 const ANIMATION_SPEED = 500;
 
 door.addEventListener('click', function() {
+    if (door.classList.contains('done')) {
+        return;
+    }
     if (!door.classList.contains('open')) {
         door.classList.toggle('open');
         toggleKnocks();
@@ -25,31 +28,33 @@ door.addEventListener('click', function() {
 const respondButton = document.getElementById('respond-button');
 
 const guestDialogues = [
-    "Hey! Do you have any idea how much damage you've caused?",
-    "Did you not realize the impact that all of your hydraulic fracking would have on the water here? Your wells consume millions of gallons of water from our sources of water! Now the public here is sturggling to find water.",
-    "More water?! Get a load of this kid! Not if you keep pollluting it too! All the flowback water coming from your wells is contaminated with heavy metals, radioactive elements, and toxic chemicals! This water pollution is contimating our groundwater and affecting our ecosystem!",
-    "Why don't you see for yourself? Run this water test to see what you've done to the water here!",
+    "Hey there! Ever stop to think about the havoc you're wreaking?",
+    "You don't realize the ripple effect of your fracking frenzy, do you? Those wells of yours are guzzling down millions of gallons from our already strained water sources! Now folks around here are parched, thanks to you.",
+    "Enough water? Listen to this rookie! Not if you keep turning it into a toxic cocktail! All that flowback water seeping into the ground is laced with heavy metals, radioactivity, and all manner of nasties! It's poisoning our aquifers and messing with the entire ecosystem!",
+    "See for yourself! Take this water sample and witness the mess you've made!",
     
-    "I'm one of your geologists, and something is not right! Your fracking is causing too much damage",
-    "Well when you inject all the wasteater your site produces into the rock, you're raising the pressure levels in the rock formations. All of these seem small now, but there seem to be a lot of them - creating the potential for a very large and damaging earthquake right near all of these houses!",
-    "Yes it can, here let me show you.",
+    "Listen up, I'm no doomsayer, but something's amiss! Your fracking frenzy is setting off alarm bells.",
+    "Well when you inject all the wastewater your site produces into the rock, you're raising the pressure levels in the rock formations. Those little tremors might not seem like much now, but they're adding up. And if we're not careful, we could be looking at a major quake right in our backyard!",
+    "Oh it's no stretch. Here let me show you.",
 
-    "You've destroyed our rural roads",
-    "All of those trucks? There yours ain't they? Well, let me tell you, they are HEAVY! And there's just so many of them and the mere size of them is terrifying! Our roads weren't built for this. They can't carry all of these vehicles all willy-nilly like this."
+    "You've torn up our country roads.",
+    "Them trucks of yours? They're beasts! And there's a whole convoy of 'em, rumbling through our quiet lanes day in, day out. Our roads ain't built for that kind of punishment, I tell ya.",
+    "You better, else there won't be much road left to catch anyone on!"
 ];
 
 const userDialogues = [
-  "Who are you? Damage? What are you talking about?",
-  "But there's more water?? is there not?",
-  "I don't believe you",
-  "Ugh, okay get out, I'll do something about it? Bye now.",
+  "And who might you be? Havoc? What on earth are you on about?",
+  "But surely there's enough water to go around, right?",
+  "You can't be serious.",
+  "Fine, leave it with me. I'll see what I can do. Goodbye.",
 
-  "Okay what do you mean?",
-  "What? How does that even work? Fracking can't lead to earthquakes?!",
-  "Ugh, okay bye. I'll figure something out. Bye now.",
+  "Alright, spill it. What's got you rattled?",
+  "Hold on, fracking causing earthquakes? That's a stretch!",
+  "Okay, okay, I'll look into it. Thanks. Goodbye.",
 
-  "What? Who are you?? How can I destroy whole roads???",
-  "Ugh, okay, I guess I'll deal with it? Bye now."
+  "Whoa, slow down. Who are you, and how exactly am I tearing up roads?",
+  "Alright, alright, I get it. I'll see what I can do. Catch you later.",
+  "I get it!"
 ];
 
 const interactiveSpots = {4: ["water", new URL("/raw-assets/images{m}{tps}/scientist.png", import.meta.url).href], 7: ["earthquake", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href], 9: ["roads", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href]}
@@ -103,6 +108,7 @@ function startSlideshow() {
         case "roads":
             console.log("error at roads");
             slideshowImages.push(new URL("/raw-assets\images{m}{tps}\before_road.jpg", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road.jpg", import.meta.url).href);
             slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road2.jpg", import.meta.url).href); // Image URL for roads
             // Push more images if needed
         
@@ -157,7 +163,11 @@ function kickoutGuest() {
     clearInterval(interval);
     windowImage.src = (new URL("/raw-assets\images{m}{tps}\window.jpg", import.meta.url).href);
 
-
+    if (dialogueIndex == 9) {
+        continueButton.style.display = 'block';
+        door.classList.add('done');
+        toggleKnocks();
+    }
 }
 
 function removePreviousDialogue() {

@@ -92,6 +92,10 @@ body, html {
     cursor: default;
 }
 
+#door-image.done {
+    cursor: default;
+}
+
 #person {
     position: absolute;
     bottom: 0;
@@ -142,6 +146,10 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#window-image {
+    max-height: 100%;
 }
 
 .knock {
@@ -232,30 +240,20 @@ body, html {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    width: 70%;
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 100;
+    width: 300px;
     transform: translateX(-50%);
-    font-size: 20px;
-    font-family: "Patrick Hand", cursive;
-    font-weight: 400;
-    font-style: normal;
+    display: none;
+    background-color: #ffc107;
+    padding: 5px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
     text-align: center;
+    text-decoration: none; /* Remove default link underline */
+    font-family: 'Koulen', sans-serif;
+    color: white; /* Change link color */
+    text-decoration: none; /* Remove default link underline */
+    pointer-events: auto;
+    font-size: 24px;
+    letter-spacing: 2px;
 }
 
-#continue-button:hover {
-    background-color: #ccc;
-}
-
-#continue-button:active {
-    background-color: #aaa;
-}
-
-#continue-button.unactive {
-    background-color: #797979;
-    cursor: default;
-}
