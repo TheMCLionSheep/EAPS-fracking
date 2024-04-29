@@ -27,8 +27,10 @@ body, html {
     position: relative;
     height: 40%;
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: scroll; /* Enable scrolling */
+    padding-right: 10px; /* Add space for scrollbar */
 }
+
 .dialogue {
     position: absolute;
     background-color: #950e18;
@@ -45,6 +47,7 @@ body, html {
     opacity: 0; /* Initially transparent */
     transition: top 0.5s ease, opacity 0.5s ease; /* Transition for slide up and fade in animation */
 }
+
 .user-bubble {
     right: 0;
     background-color: #006400;
@@ -73,6 +76,7 @@ body, html {
     border-bottom: 0;
     box-sizing: border-box; /* Ensure border size is included in the element's total width and height */
 }
+
 #door-image {
     position: relative;
     height: 100%;
@@ -96,6 +100,7 @@ body, html {
     display: flex;
     justify-content: center;
 }
+
 #person-image {
     position: relative;
     bottom: 0px;
@@ -122,6 +127,7 @@ body, html {
     font-style: normal;
     text-align: center;
 }
+
 #respond-button.unactive {
     background-color: #797979;
     cursor: default;
@@ -138,7 +144,6 @@ body, html {
     justify-content: center;
 }
 
-
 .knock {
     position: absolute;
     top: 0;
@@ -153,16 +158,20 @@ body, html {
     z-index: 200;
     display: none;
 }
+
 .knock.active {
     display: block;
 }
+
 .knock1 {
     animation-delay: 0s;
 }
+
 .knock2 {
     animation: knockAnimation2 3s infinite; /* Apply animation */
     animation-delay: 0.5s;
 }
+
 .knock3 {
     animation: knockAnimation3 3s infinite; /* Apply animation */
     animation-delay: 1s;
@@ -201,6 +210,7 @@ body, html {
         transform: translate(60px, -150px); /* Move away from the door */
     }
 }
+
 @keyframes knockAnimation3 {
     0% {
         opacity: 0; /* Start with opacity 0 */

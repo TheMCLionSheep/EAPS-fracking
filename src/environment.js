@@ -2,6 +2,9 @@ const door = document.getElementById('door-image');
 const person = document.getElementById('person');
 const personImage = document.getElementById("person-image");
 const dialogueColumn = document.getElementById('dialogue-column');
+const windowImage = document.getElementById('window-image');
+
+var interval;
 
 const TEXT_SPEED = 30;
 const ANIMATION_SPEED = 500;
@@ -47,7 +50,6 @@ const userDialogues = [
 ];
 
 const interactiveSpots = {4: ["water", new URL("/raw-assets/images{m}{tps}/scientist.png", import.meta.url).href], 7: ["earthquake", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href], 9: ["roads", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href]}
-
 var dialogueIndex = 0;
 var slideshowImages = []; // initialize slideshow
 
@@ -61,7 +63,7 @@ respondButton.addEventListener('click', function() {
     if (dialogueIndex in interactiveSpots) {
         // Onto next person, close the door
         // Clear the previous slideshow images
-
+        
         setTimeout(kickoutGuest, newDialogueText.length * TEXT_SPEED + 1000);
     } else {
         setTimeout(guestResponse, newDialogueText.length * TEXT_SPEED + 1000);
@@ -69,40 +71,11 @@ respondButton.addEventListener('click', function() {
 });
 
 function startSlideshow() {
-    let index = 0;
-    const interval = setInterval(() => {
-        // Set the image source to the current image in the slideshowImages array
-        personImage.src = slideshowImages[index];
-        index++;
-
-        // Reset index if it exceeds the length of the slideshowImages array
-        if (index >= slideshowImages.length) {
-            index = 0;
-        }
-    }, 3000); // Change image every 3 seconds
-
-    // Stop the slideshow after 15 seconds
-    setTimeout(() => {
-        clearInterval(interval);
-    }, 15000);
-}
-
-function guestResponse() {
-    displayNextDialogue(guestDialogues[dialogueIndex], false)
-}
-
-function kickoutGuest() {
-    door.classList.toggle('open');
-    removePreviousDialogue();
-    setTimeout(() => {
-        personImage.src = interactiveSpots[dialogueIndex][1];
-        toggleKnocks();
-    }, ANIMATION_SPEED);
 
     slideshowImages = [];
 
     // Get the current interactive spot
-    const spot = interactiveSpots[dialogueIndex][0];
+    const spot = interactiveSpots[dialogueIndex+1][0];
 
     // Push all images related to this spot into the slideshowImages array
     switch (spot) {
@@ -118,16 +91,61 @@ function kickoutGuest() {
             // Push more images if needed
             break;
         case "roads":
-            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\before_road.png", import.meta.url).href);
-            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road1.png", import.meta.url).href);
-            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road2.png", import.meta.url).href); // Image URL for roads
+            console.log("error at roads");
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\before_road.jpg", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road1.jpg", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road2.jpg", import.meta.url).href); // Image URL for roads
             // Push more images if needed
             break;
         // Add more cases if needed for additional interactive spots
     }
+    let index = 0;
+    windowImage.src = slideshowImages[index];
+        index++;
 
-    // Start the slideshow
-    startSlideshow();
+        // Reset index if it exceeds the length of the slideshowImages array
+        if (index >= slideshowImages.length) {
+            index = 0;
+        }
+    interval = setInterval(() => {
+        // Set the image source to the current image in the slideshowImages array
+        windowImage.src = slideshowImages[index];
+        index++;
+
+        // Reset index if it exceeds the length of the slideshowImages array
+        if (index >= slideshowImages.length) {
+            index = 0;
+        }
+    }, 3000); // Change image every 3 seconds
+
+    // Stop the slideshow after 15 seconds
+    
+
+
+}
+
+function guestResponse() {
+    displayNextDialogue(guestDialogues[dialogueIndex], false)
+    //check if dialouge index is right before last one
+    if (dialogueIndex+1 in interactiveSpots) {
+        startSlideshow();
+    }
+}
+
+function kickoutGuest() {
+    door.classList.toggle('open');
+    removePreviousDialogue();
+    setTimeout(() => {
+        personImage.src = interactiveSpots[dialogueIndex][1];
+        toggleKnocks();
+    }, ANIMATION_SPEED);
+
+    clearInterval(interval);
+    windowImage.src = (new URL("/raw-assets\images{m}{tps}\window.jpg", import.meta.url).href);
+
+    
+    
+
 }
 
 function removePreviousDialogue() {

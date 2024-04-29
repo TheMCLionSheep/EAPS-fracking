@@ -9,11 +9,26 @@
       "assets": [
         {
           "alias": [
-            "images/images.json"
+            "images/images-1.json"
           ],
           "src": [
-            "images/images@1x.json",
-            "images/images@0.5x.json"
+            "images/images-1@1x.json",
+            "images/images-1@0.5x.json"
+          ],
+          "data": {
+            "tags": {
+              "m": true,
+              "tps": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "images/images-0.json"
+          ],
+          "src": [
+            "images/images-0@1x.json",
+            "images/images-0@0.5x.json"
           ],
           "data": {
             "tags": {
