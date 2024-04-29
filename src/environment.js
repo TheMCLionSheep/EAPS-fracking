@@ -49,7 +49,7 @@ const userDialogues = [
 const interactiveSpots = {4: ["water", new URL("/raw-assets/images{m}{tps}/scientist.png", import.meta.url).href], 7: ["earthquake", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href], 9: ["roads", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href]}
 
 var dialogueIndex = 0;
-slideshowImages = []; // initialize slideshow
+var slideshowImages = []; // initialize slideshow
 
 respondButton.addEventListener('click', function() {
     if (respondButton.classList.contains('unactive')) {
@@ -128,9 +128,6 @@ function kickoutGuest() {
 
     // Start the slideshow
     startSlideshow();
-
-
-
 }
 
 function removePreviousDialogue() {
