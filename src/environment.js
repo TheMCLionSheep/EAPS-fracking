@@ -3,6 +3,9 @@ const person = document.getElementById('person');
 const personImage = document.getElementById("person-image");
 const dialogueColumn = document.getElementById('dialogue-column');
 const windowImage = document.getElementById('window-image');
+const continueButton = document.getElementById('continue-button');
+
+var kickoutGuestCount = 0;
 
 var interval;
 
@@ -68,6 +71,13 @@ respondButton.addEventListener('click', function() {
     } else {
         setTimeout(guestResponse, newDialogueText.length * TEXT_SPEED + 1000);
     }
+
+});
+
+continueButton.addEventListener('click', function() {
+    if (continueButton.classList.contains('unactive')) {
+        return;
+    }
 });
 
 function startSlideshow() {
@@ -93,10 +103,12 @@ function startSlideshow() {
         case "roads":
             console.log("error at roads");
             slideshowImages.push(new URL("/raw-assets\images{m}{tps}\before_road.jpg", import.meta.url).href);
-            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road1.jpg", import.meta.url).href);
             slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road2.jpg", import.meta.url).href); // Image URL for roads
             // Push more images if needed
+        
             break;
+            
+
         // Add more cases if needed for additional interactive spots
     }
     let index = 0;
@@ -130,6 +142,8 @@ function guestResponse() {
     if (dialogueIndex+1 in interactiveSpots) {
         startSlideshow();
     }
+
+
 }
 
 function kickoutGuest() {
@@ -143,8 +157,6 @@ function kickoutGuest() {
     clearInterval(interval);
     windowImage.src = (new URL("/raw-assets\images{m}{tps}\window.jpg", import.meta.url).href);
 
-    
-    
 
 }
 
@@ -193,3 +205,4 @@ function toggleKnocks() {
         knock.classList.toggle('active');
     });
 }
+

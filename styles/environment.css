@@ -227,3 +227,35 @@ body, html {
         transform: translate(130px, -90px); /* Move away from the door */
     }
 }
+
+#continue-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 70%;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
+#continue-button:hover {
+    background-color: #ccc;
+}
+
+#continue-button:active {
+    background-color: #aaa;
+}
+
+#continue-button.unactive {
+    background-color: #797979;
+    cursor: default;
+}
