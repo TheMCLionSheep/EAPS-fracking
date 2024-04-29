@@ -26,16 +26,18 @@ const respondButton = document.getElementById('respond-button');
 
 const guestDialogues = [
     "Hey! Do you have any idea how much damage you've caused?",
-    "Did you not realize the impact that all of your hydraulic fracking would have on the water here? Your wells consume millions of gallons of water from our sources of water! Now the public here is sturggling to find water.",
-    "More water?! Get a load of this kid! Not if you keep pollluting it too! All the flowback water coming from your wells is contaminated with heavy metals, radioactive elements, and toxic chemicals! This water pollution is contimating our groundwater and affecting our ecosystem!",
-    "Why don't you see for yourself? Run this water test to see what you've done to the water here!",
+    "Did you not realize the impact that all of your hydraulic fracking would have on the water here? Your wells consume millions of gallons of water from our sources of water! Now the public here is struggling to find water.",
+    "More water?! Get a load of this kid! Not if you keep pollluting it too! All the flowback water coming from your wells is contaminated with heavy metals, radioactive elements, and toxic chemicals! This water pollution is contaminating our groundwater and affecting our ecosystem!",
+    "Why don't you see for yourself? Look at this water test from the flowback water coming back with high amounts of toxic chemicals such as benzene, chromium-6, and other chemical additives!",
     
     "I'm one of your geologists, and something is not right! Your fracking is causing too much damage",
-    "Well when you inject all the wasteater your site produces into the rock, you're raising the pressure levels in the rock formations. All of these seem small now, but there seem to be a lot of them - creating the potential for a very large and damaging earthquake right near all of these houses!",
+    "Well when you inject all the wastewater your site produces into the rock, you're raising the pressure levels in the rock formations. All of these seem small now, but there seem to be a lot of them - creating the potential for a very large and damaging earthquake right near all of these houses!",
     "Yes it can, here let me show you.",
 
     "You've destroyed our rural roads",
-    "All of those trucks? There yours ain't they? Well, let me tell you, they are HEAVY! And there's just so many of them and the mere size of them is terrifying! Our roads weren't built for this. They can't carry all of these vehicles all willy-nilly like this."
+    "All of those trucks? They're yours ain't they? Well, let me tell you, they are HEAVY! And there's just so many of them and the mere size of them is terrifying! Our roads weren't built for this. They can't carry all of these vehicles all willy-nilly like this.",
+
+    "Press the Continue to Finish Page now! But remember to fix all of the problems you've created!!"
 ];
 
 const userDialogues = [
