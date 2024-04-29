@@ -58,8 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function checkVistedEvents() {
-        allVisited = true;
+    function checkVisitedEvents() {
+        console.log(eventsClicked);
+        let allVisited = true;
         eventsClicked.forEach(visited => {
             if (!visited) {
                 allVisited = false;
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Remove animate-in class after animation completes
                 setTimeout(() => {
                     previewSection.classList.remove('animate-in');
-                    checkVistedEvents()
+                    checkVisitedEvents()
                 }, 600); // Use the same duration as the CSS transition (0.5s)
 
             }, 600); // Use the same duration as the CSS transition (0.5s)
