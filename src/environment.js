@@ -49,6 +49,7 @@ const userDialogues = [
 const interactiveSpots = {4: ["water", new URL("/raw-assets/images{m}{tps}/scientist.png", import.meta.url).href], 7: ["earthquake", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href], 9: ["roads", new URL("/raw-assets/images{m}{tps}/farmer.png", import.meta.url).href]}
 
 var dialogueIndex = 0;
+slideshowImages = []; // initialize slideshow
 
 respondButton.addEventListener('click', function() {
     if (respondButton.classList.contains('unactive')) {
@@ -59,11 +60,32 @@ respondButton.addEventListener('click', function() {
 
     if (dialogueIndex in interactiveSpots) {
         // Onto next person, close the door
+        // Clear the previous slideshow images
+
         setTimeout(kickoutGuest, newDialogueText.length * TEXT_SPEED + 1000);
     } else {
         setTimeout(guestResponse, newDialogueText.length * TEXT_SPEED + 1000);
     }
 });
+
+function startSlideshow() {
+    let index = 0;
+    const interval = setInterval(() => {
+        // Set the image source to the current image in the slideshowImages array
+        personImage.src = slideshowImages[index];
+        index++;
+
+        // Reset index if it exceeds the length of the slideshowImages array
+        if (index >= slideshowImages.length) {
+            index = 0;
+        }
+    }, 3000); // Change image every 3 seconds
+
+    // Stop the slideshow after 15 seconds
+    setTimeout(() => {
+        clearInterval(interval);
+    }, 15000);
+}
 
 function guestResponse() {
     displayNextDialogue(guestDialogues[dialogueIndex], false)
@@ -76,6 +98,39 @@ function kickoutGuest() {
         personImage.src = interactiveSpots[dialogueIndex][1];
         toggleKnocks();
     }, ANIMATION_SPEED);
+
+    slideshowImages = [];
+
+    // Get the current interactive spot
+    const spot = interactiveSpots[dialogueIndex][0];
+
+    // Push all images related to this spot into the slideshowImages array
+    switch (spot) {
+        case "water":
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\watertest1.png", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\watertest.png", import.meta.url).href); // Image URL for water
+            // Push more images if needed
+            break;
+        case "earthquake":
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\earthquake1.png", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\earthquake2.png", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\earthquake3.png", import.meta.url).href); // Image URL for earthquake
+            // Push more images if needed
+            break;
+        case "roads":
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\before_road.png", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road1.png", import.meta.url).href);
+            slideshowImages.push(new URL("/raw-assets\images{m}{tps}\after_road2.png", import.meta.url).href); // Image URL for roads
+            // Push more images if needed
+            break;
+        // Add more cases if needed for additional interactive spots
+    }
+
+    // Start the slideshow
+    startSlideshow();
+
+
+
 }
 
 function removePreviousDialogue() {
