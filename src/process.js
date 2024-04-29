@@ -13,8 +13,8 @@ const donovanSpeeches = [
 "Great, now that you understand the history, let's actually build a well. Start by pressing the build button.",
 "Following the guideline, drag to drill a wellbore into the Earth. This will go through the layers of sediment and rock until it reaches our targeted shale formation. We can also extend our wellbore horizontally and make it go through the shale reservoir to help maximize the amount of contact.",
 "If you're happy with the drill hole, press continue. Otherwise, you can retry your hole to match the guidelines again.",
-"Now we need to add some casing, made with both concrete and metal to protect the fracking fluid from seeping into other layers of sediment, and to prevent the oil and gas we collect from leaking out. Hold the fill button until the casing is in.",
-"Time to perforate the shale reservoir. We'll lay some explosives to add holes into the shale.",
+"Now we need to add some casing, made with both concrete and metal to protect the fracking fluid from seeping into other layers of sediment, and to prevent the oil and gas we collect from leaking out. Hold the fill button until the casing is in. This will also ensure that when the flowback water comes back up, it will stay within the casing and not go into the ground around this area.",
+"Time to perforate the shale reservoir. We'll lay some materials to add holes into the shale.",
 "Lastly, we need to add our highly pressurized fracking fluid into the drill hole to fracture the shale! The fluid is includes water, sand, and chemicals. The sand here serves as a proppant, keeping the cracks open, allowing the hydrocarbons to flow more freely to the surface. The chemical additives in the fluid also help keep the process efficient by reducing friction and preventing bacterial growth within the wellbore.",
 "Perfect! We did it, all those fractures should release the oil and gas trapped in the shale and the pressure will push oil, gas, and flowback water back to the surface."
 ];
